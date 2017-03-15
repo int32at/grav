@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href="/user/pages/images/favicon.png?v=1" />
     <link rel="canonical" href="{{ page.url(true, true) }}" />
-
     {% block stylesheets %}
         {% do assets.addCss('theme://css/pure-0.5.0/grids-min.css', 103) %}
         {% do assets.addCss('theme://css-compiled/nucleus.css', 102) %}
@@ -17,7 +16,12 @@
         {% do assets.addCss('theme://css/custom.css', 100) %}
         {% do assets.addCss('theme://css/font-awesome.min.css', 100) %}
         {% do assets.addCss('theme://css/slidebars.min.css') %}
-
+        {% set cssAssets = page.header.assets.css ? page.header.assets.css : site.assets.css %}
+        {% if cssAssets %}
+            {% for css in cssAssets %}
+            {% do assets.addCss(css) %}
+            {% endfor %}
+        {% endif %}
         {% if browser.getBrowser == 'msie' and browser.getVersion == 10 %}
             {% do assets.addCss('theme://css/nucleus-ie10.css') %}
         {% endif %}
@@ -27,15 +31,19 @@
         {% endif %}
     {% endblock %}
     {{ assets.css() }}
-
     {% block javascripts %}
         {% do assets.addJs('jquery', 101) %}
         {% do assets.addJs('theme://js/modernizr.custom.71422.js', 100) %}
         {% do assets.addJs('theme://js/antimatter.js') %}
         {% do assets.addJs('theme://js/slidebars.min.js') %}
+        {% set jsAssets = page.header.assets.js ? page.header.assets.js : site.assets.js %}
+        {% if jsAssets %}
+            {% for js in jsAssets %}
+            {% do assets.addJs(js) %}
+            {% endfor %}
+        {% endif %}
     {% endblock %}
     {{ assets.js() }}
-
 {% endblock head %}
 </head>
 <body id="top" class="{{ page.header.body_classes }}">
