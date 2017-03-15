@@ -1,0 +1,8 @@
+<div class="contact-item text-center">
+  <h4 class="no-padding"><i class="fa fa-{{ icon }}"></i>{{ title }}</h4>
+  <p class="no-padding">
+    {% if link %}<a href="{{link}}">{% endif %}
+    {{ description }}
+    {% if link %}</a>{% endif %}
+  </p>
+</div>

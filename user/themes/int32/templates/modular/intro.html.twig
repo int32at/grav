@@ -1,0 +1,17 @@
+<div class="intro">
+	<div class="intro-background" style="background-image:url({{ page.media.images|first.url }})">
+	</div>
+	<div class="intro-background-overlay"></div>
+	<div class="intro-center">
+	{% if page.header.logo %}
+	<div class="intro-logo">
+	{{ page.find("/images").media[page.header.logo].html }}
+	</div>
+	{% endif %}
+	{% if page.header.title %}
+	<div class="intro-title" {% if page.header.title_style %}style="{{ page.header.title_style }}"{% endif %}>
+	{{ page.header.title }}
+	</div>
+	{% endif %}
+	</div>
+</div>

@@ -1,0 +1,7 @@
+{% set includes = [] %}
+
+{% for key,item in page.header.contact %}
+  {% set includes = includes|merge([{ 'template' : 'modular/contact_item.html.twig', 'with' : page.header.contact[key] }]) %}
+{% endfor %}
+
+{% include 'modular/grid.html.twig' with { 'include': includes } %}

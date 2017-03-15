@@ -1,0 +1,9 @@
+{% set includes = [] %}
+
+{% for image in page.media.images %}
+  {% set url = image.url %}
+  {% set copyright = image.basename ends with '_c' ? page.header.copyright : '' %}
+  {% set includes = includes|merge([{ 'template' : 'modular/image.html.twig', 'with' : {'image' : image.url, 'class' : 'image-grid-item', 'copyright' : copyright } }]) %}
+{% endfor %}
+
+{% include 'modular/grid.html.twig' with { 'include': includes } %}

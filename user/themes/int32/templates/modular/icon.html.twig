@@ -1,0 +1,9 @@
+{% set clazz = page.header.class ? page.header.class : class %}
+{% set icon = page.header.icon ? page.header.icon : icon %}
+{% set size = page.header.size ? page.header.size : size %}
+
+<div {% if clazz %}class="{{ clazz }}"{% endif %}>
+  <p><i class="fa fa-{{ icon }} {% if size %}fa-{{ size }}{% endif %}"></i></p>
+  {% if page.header.title %}<h3 {% if page.header.title_style %} style="{{ page.header.title_style }}"{% endif %}>{{ page.header.title }}</h3>{% endif %}
+  {% if content %}<div{% if page.header.content_style %} style="{{ page.header.content_style }}"{% endif %}>{{ content }}</div>{% endif %}
+</div>

@@ -1,0 +1,12 @@
+title: My Website
+logo:
+author:
+  name: int32.at
+  email: m@int32.at
+metadata:
+    generator: 'Grav'
+    description:
+    keywords:
+    author: int32.at
+    robots: 'noindex, nofollow'
+footer:

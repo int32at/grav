@@ -1,0 +1,31 @@
+{% set logo = page.media.images["logo.png"] %}
+<div class="intro">
+	<div class="fader">
+		{% for img in page.media.images %}
+
+		{% if img.basename != logo.basename %}
+		<img class="slide" src="{{ img.url }}"/>
+		{% endif %}
+
+		{% endfor %}
+		<div class="fader_controls">
+
+			{% if content %}
+			<div class="page logo">{{ logo.html }}</div>
+			{% endif %}
+
+			{% if content %}
+			<div class="page text">{{ content }}</div>
+			{% endif %}
+			<div class="page prev" data-target="prev">&lsaquo;</div>
+			<div class="page next" data-target="next">&rsaquo;</div>
+			<ul class="pager_list"></ul>
+		</div>
+	</div>
+</div>
+<script src="{{ theme_url }}/js/fader.min.js" charset="utf-8"></script>
+<script>
+$(document).ready(function() {
+	$('.fader').easyFader({ slideDur: 6000, fadeDur: 800 });
+});
+</script>

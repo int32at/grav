@@ -1,0 +1,129 @@
+html, body {
+	height: 100%; // use !important to override slidebars.min.css
+}
+
+body {
+	background: $page-bg;
+	color: $core-text;
+	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+
+a {
+	color: $core-accent;
+	&:hover {
+		color: darken($core-accent, 20%);
+	}
+}
+
+b, strong {
+	font-weight: $font-weight-bold
+}
+
+// Global Container
+#container {
+ 	min-height: 100%;
+  	position: relative;
+}
+
+// Fullwidth styles
+.fullwidth {
+	#body {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	#header, #breadcrumbs, .blog-header, .blog-content-item, .content-wrapper, ul.pagination, #body > .modular-row {
+		@extend .padding-horiz;
+	}
+}
+
+// Global body styling
+#body {
+	@extend .default-animation;
+	@extend .padding-horiz;
+
+	background: $page-bg;
+	padding-top: $header-height + $padding-vert;
+	padding-bottom: $footer-height + $padding-vert + 3rem;
+}
+
+// Alignment
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
+.no-padding {
+	padding: 0px !important;
+  margin: 0px !important;
+}
+
+.text-justify {
+	text-align: justify !important;
+}
+
+.content-section {
+	padding: 1rem 15rem;
+	width: 100% !important;
+	@include breakpoint(desktop-range) {
+		padding: 1rem 7rem;
+	}
+	@include breakpoint(tablet-range) {
+		padding: 1rem 7rem;
+	}
+	@include breakpoint(large-mobile-range) {
+		padding: 0px 2rem;
+	}
+	@include breakpoint(small-mobile-range) {
+		padding: 0px 2rem;
+	}
+
+	i:hover {
+		opacity: 0.8;
+	}
+}
+
+[class*='.content-section']:first-of-type {
+	padding: 0rem 7rem !important;
+}
+
+.image-grid-item {
+	padding: 0px 5px;
+}
+
+.copyright {
+	padding: 5px 0px !important;
+	margin: 0px !important;
+	margin-top: -10px !important;
+	font-size: 10px;
+	text-align: center;
+}
+
+[class*='size-1-'] {
+	padding-right: 30px;
+	padding-left: 30px;
+
+	@include breakpoint(mobile-only) {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	@include breakpoint(tablet-range) {
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+}
+[class*='size-1-']:last-of-type {
+	padding-right: 0;
+}
+
+[class*='size-1-']:first-of-type {
+	padding-left: 0px !important;
+}

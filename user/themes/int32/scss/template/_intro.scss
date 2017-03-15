@@ -1,0 +1,76 @@
+.intro {
+  margin: -7rem -7rem 0px -7rem !important;
+  position: relative;;
+  height: 100%;
+}
+
+.intro-background-overlay {
+  background-color: #2a2a2a;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  opacity: 0.5;
+}
+
+.intro-background {
+  width:  100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.intro-logo {
+  text-align: center;
+}
+
+.intro img {
+  width: 50%;
+
+  @include breakpoint(tablet-range) {
+    width: 100%;
+  }
+  @include breakpoint(large-mobile-range) {
+    width: 80%;
+  }
+  @include breakpoint(small-mobile-range) {
+    width: 80%;
+  }
+}
+
+.intro-title {
+  padding: 5rem 0px;
+  font-size: 72px;
+  color: white;
+  text-align: center;
+  line-height: normal;
+
+  @include breakpoint(tablet-range) {
+    font-size: 64px;
+  }
+  @include breakpoint(large-mobile-range) {
+    padding: 2rem 0px;
+    font-size: 36px;
+  }
+  @include breakpoint(small-mobile-range) {
+    padding: 2rem 0px;
+    font-size: 36px;
+  }
+}
+
+.intro-center {
+  z-index: 999;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  padding: 0px 7rem;
+
+  @include breakpoint(large-mobile-range) {
+    top: 35%;
+  }
+  @include breakpoint(small-mobile-range) {
+    top: 35%;
+  }
+}

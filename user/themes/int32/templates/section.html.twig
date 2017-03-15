@@ -1,0 +1,16 @@
+{% block content %}
+
+    <div class="{% if is_content_page%}content-section{% endif %}">
+        {%if page.header.title %}<h1>{{ page.header.title }}</h1>{% endif %}
+        {% set desc_align = page.header.description_align ? page.header.description_align : "center" %}
+        {%if page.header.description %}<p class="text-{{desc_align}}">{{ page.header.description }}</p>{% endif %}
+        {{ page.content }}
+    </div>
+    
+    {% set modules = page.collection({'items':'@self.modular','order': {'by': 'default', 'dir': 'asc'}}) %}
+    {% for module in modules %}
+        <div id="{{ module.menu }}" class="{{class}}{% if is_content_page%}content-section{% endif %}">
+            {{ module.content }}
+        </div>
+    {% endfor %}
+{% endblock %}

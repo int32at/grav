@@ -1,0 +1,36 @@
+{% set img = image ? image : page.media.images|first.url %}
+{% set clzz = class ? class : page.header.class %}
+{% set position_title = page.header.title_position ?  page.header.title_position : "bottom" %}
+{% set position_desc = page.header.description_position ?  page.header.description_position : "bottom" %}
+
+<div {% if clzz %}class="{{ clzz }}"{% endif %}>
+
+
+{% if page.header.title and position_title == "top" %}
+  <h3>{{ page.header.title }}</h3>
+{% endif %}
+
+{% if page.header.description and  position_desc == "top" %}
+  <p>{{ page.header.description }}</p>
+{% endif %}
+{% if page.header.link %}<a href="{{page.header.link}}">{% endif %}
+  <div class="img-container">
+    <img src="{{ img }}" alt="" class="pure-img img-responsive" {% if page.header.style %}style="{{ page.header.style }}"{% endif %} />
+
+  {% if page.header.class %}
+    <div class="{{ clzz }} img-overlay"></div>
+  {% endif %}
+  </div>
+  {% if page.header.link %}</a>{% endif %}
+{% if page.header.title and position_title == "bottom" %}
+  <h3>{{ page.header.title }}</h3>
+{% endif %}
+
+{% if page.header.description and  position_desc == "bottom" %}
+  <p>{{ page.header.description }}</p>
+{% endif %}
+
+{% if copyright %}
+<p class="copyright">© {{ copyright }}</p>
+{% endif %}
+</div>

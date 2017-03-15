@@ -1,0 +1,34 @@
+{% block grid %}
+{% set data = include ? include : page.collection({'items':'@self.modular','order': {'by': 'default', 'dir': 'asc'}}) %}
+{% set data_length = data|length %}
+{% set columns = page.header.columns ? page.header.columns : data_length %}
+{% set grids_needed = (columns < data_length ? (data_length / columns)|round(0, 'ceil') : 1) %}
+
+{% set grid_items = [] %}
+{% set item_counter = 0 %}
+
+{% for item in data %}
+  {% set grid_items = grid_items|merge([item])%}
+{% endfor %}
+
+{% for i in 0..grids_needed-1 %}
+<div class="grid">
+  {% for i in 0..columns-1%}
+  {% set item = grid_items[item_counter] %}
+  {% set item_style = page.header.item_style ? page.header.item_style : item.header.item_style %}
+
+  <div class="size-1-{{columns}} {{ page.header.item_class }}" {% if item_style %}style="{{ item_style }}"{% endif %}>
+    {% if item %}
+      {% if include %}
+        {% set with = item.with is not iterable ? [item.with] : item.with %}
+        {% include item.template with with %}
+      {% else %}
+        {{ item.content }}
+      {% endif %}
+      {% set item_counter = item_counter + 1 %}
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}
+{% endblock %}
